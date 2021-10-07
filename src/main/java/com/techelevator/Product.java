@@ -1,16 +1,16 @@
 package com.techelevator;
 
 public class Product {
-    String name;
-    String category;
-    double price;
-    int stockCount;
+    private String name;
+    private String category;
+    private double price;
+    private int stockCount;
 
-    public Product(String name, String category, double price, int stockCount) {
+    public Product(String name, String category, double price) {
         this.name = name;
         this.category = category;
         this.price = price;
-        this.stockCount = stockCount;
+        this.stockCount = 5;
     }
 
     public String getName() {
