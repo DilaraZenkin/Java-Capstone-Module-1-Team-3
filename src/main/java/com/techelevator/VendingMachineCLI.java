@@ -26,6 +26,7 @@ public class VendingMachineCLI {
 		testingArray[2] = chocolateBar;
 		testingArray[3] = chewingGum;
 
+		/*
 		for (int i = 0; i < 4; i++) {
 			System.out.println("-----------------");
 			System.out.println("Product Name:   " + testingArray[i].getName());
@@ -33,6 +34,18 @@ public class VendingMachineCLI {
 			System.out.println("Price:          " + testingArray[i].getPrice());
 			System.out.println("Stock Count:    " + testingArray[i].getName());
 		}
+		*/
+
+		User frankie = new User();
+		frankie.addMoney(20);
+		frankie.addMoney(5);
+		frankie.addMoney(1);
+		System.out.println("Frankie's Money: " + frankie.getCurrentMoneyProvided());
+		frankie.setSlotSelection("B2");
+		System.out.println("Frankie chose slot " + frankie.getSlotSelection() + " and has $" + frankie.getCurrentMoneyProvided());
+		System.out.println("Frankie wants to purchase " + frankie.getProductsToPurchase().size() + " products.");
+
+		Machine redVendingMachine = new Machine();
 
 
 	}

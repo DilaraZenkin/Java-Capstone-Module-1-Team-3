@@ -14,21 +14,21 @@ public class User {
         this.isFinished = false;
         this.productsToPurchase = new ArrayList<>();
     }
+
     //Methods
-   // addMoney(int bill)
     public double addMoney(int bill) {
         return currentMoneyProvided += bill;
     }
-    // dispenseChange()
 
     public double dispenseChange() {
         return currentMoneyProvided;
     }
 
-    // addProductToPurchaseList()
-
     public List<Product> addProductToPurchaseList(Product p) {
+        //Add product to the user's purchase list
         getProductsToPurchase().add(p);
+        //update stock count to reflect that one has been purchased
+        p.setStockCount(p.getStockCount() - 1);
         return productsToPurchase;
     }
 
