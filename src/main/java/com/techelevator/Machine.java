@@ -70,8 +70,8 @@ public class Machine {
     }
 
     public int checkProductStock(String slot){
-        System.out.println("The stock count for " + slot + " is " + products.get(slot).getStockCount());
-        return 0;
+        //System.out.println("The stock count for " + slot + " is " + products.get(slot).getStockCount());
+        return products.get(slot).getStockCount();
     }
 
     public Boolean isSlotValid(String slot) {

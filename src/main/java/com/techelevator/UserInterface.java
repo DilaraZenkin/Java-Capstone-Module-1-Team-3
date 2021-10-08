@@ -34,6 +34,12 @@ public class UserInterface {
 
     }
 
+
+    public void printProductInfo(Product purchasedProduct){
+        System.out.println("Item Purchased: " + purchasedProduct.getName());
+        System.out.println("Price:          " + purchasedProduct.getPrice());
+    }
+
     public String selectProduct() {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the slot number ");
