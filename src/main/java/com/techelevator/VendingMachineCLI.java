@@ -7,8 +7,11 @@ public class VendingMachineCLI {
 		// Make some objects here!
 
 		UserInterface mainUI = new UserInterface();
+		Machine vendingMachine = new Machine();
+		User user = new User();
+		Controller vendingMachineController = new Controller(vendingMachine, mainUI, user);
 
-
+		/*
 		mainUI.displayMainMenu();
 		System.out.println("-----------------");
 		mainUI.displayPurchaseMenu();
@@ -26,7 +29,7 @@ public class VendingMachineCLI {
 		testingArray[2] = chocolateBar;
 		testingArray[3] = chewingGum;
 
-		/*
+
 		for (int i = 0; i < 4; i++) {
 			System.out.println("-----------------");
 			System.out.println("Product Name:   " + testingArray[i].getName());
@@ -34,7 +37,7 @@ public class VendingMachineCLI {
 			System.out.println("Price:          " + testingArray[i].getPrice());
 			System.out.println("Stock Count:    " + testingArray[i].getName());
 		}
-		*/
+
 
 		User frankie = new User();
 		frankie.addMoney(20);
@@ -45,8 +48,7 @@ public class VendingMachineCLI {
 		System.out.println("Frankie chose slot " + frankie.getSlotSelection() + " and has $" + frankie.getCurrentMoneyProvided());
 		System.out.println("Frankie wants to purchase " + frankie.getProductsToPurchase().size() + " products.");
 
-		Machine redVendingMachine = new Machine();
-
+		*/
 
 	}
 }

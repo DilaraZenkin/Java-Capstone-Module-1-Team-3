@@ -16,8 +16,13 @@ public class User {
     }
 
     //Methods
-    public double addMoney(int bill) {
-        return currentMoneyProvided += bill;
+    public double addMoney(int bill)  {
+        if (bill == 1 || bill == 2 || bill == 5 || bill == 10) {
+            return currentMoneyProvided += bill;
+        } else {
+            System.out.println("Please insert a $1, $2, $5, or $10 bill.");
+            return currentMoneyProvided;
+        }
     }
 
     public double dispenseChange() {
