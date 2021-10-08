@@ -36,6 +36,15 @@ public class Machine {
         }
 
         // Parse the input file
+//    try{
+//        Scanner machineFileStreamer = new Scanner(filePath);
+//         while(machineFileStreamer.hasNextLine()) {
+//             String line = machineFileStreamer.nextLine();
+//             Product newProduct = new Product(line);
+//             products.put(newProduct, )
+//         }
+//    }
+
 
         // for each line of the input file
 
