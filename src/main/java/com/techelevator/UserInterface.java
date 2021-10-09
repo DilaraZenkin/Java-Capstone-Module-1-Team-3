@@ -32,7 +32,17 @@ public class UserInterface {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the value of your money (1, 2, 5, or 10)");
         String billDenomination = input.nextLine();
-        return Integer.parseInt(billDenomination);
+        int bill;
+        try {
+            bill = Integer.parseInt(billDenomination);
+        } catch(NumberFormatException e) {
+            System.out.println("That's not a valid bill");
+            return 0;
+        } catch(NullPointerException e) {
+            System.out.println("That's not a valid bill");
+            return 0;
+        }
+        return bill;
 
     }
 
