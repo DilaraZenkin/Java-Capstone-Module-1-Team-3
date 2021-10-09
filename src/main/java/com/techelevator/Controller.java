@@ -98,18 +98,10 @@ public class Controller {
                             if(category.equalsIgnoreCase("Gum"))
                                 System.out.println("Chew Chew, Yum!");
 
-
-
                         } else {
                             System.out.println("Please insert more money");
                         }
                     }
-
-
-
-
-
-
 
                     //List<Product> productsToPurchase = user.getProductsToPurchase();
                     //for (Product item : productsToPurchase)
@@ -123,6 +115,23 @@ public class Controller {
 
             //If (3) Finish Transaction...
             else if (purchaseMenuUserSelection.equals("3")) {
+                int quarters = 0;
+                int dimes = 0;
+                int nickels = 0;
+                double currentMoneyProvided = user.getCurrentMoneyProvided();
+                int currentMoneyProvidedInCents = (int) (currentMoneyProvided*100);
+
+                quarters = currentMoneyProvidedInCents / 25;
+                currentMoneyProvidedInCents = currentMoneyProvidedInCents % 25;
+                dimes = currentMoneyProvidedInCents / 10;
+                currentMoneyProvidedInCents = currentMoneyProvidedInCents % 10;
+                nickels = currentMoneyProvidedInCents / 5;
+                currentMoneyProvidedInCents = currentMoneyProvidedInCents % 5;
+
+                System.out.println("Number of quarters: " + quarters);
+                System.out.println("Number of dimes:    " + dimes);
+                System.out.println("Number of nickels:  " + nickels);
+                System.out.println("Money remaining:    " + currentMoneyProvidedInCents);
                 userInterface.finishTransaction();
                 isUserPresent = false;
             }
