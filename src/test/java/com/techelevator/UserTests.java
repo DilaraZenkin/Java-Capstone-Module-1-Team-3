@@ -34,6 +34,23 @@ public class UserTests {
         Assert.assertEquals(expected, currentMoneyProvided, 0.001);
     }
 
+//    @Test
+//     public void adding_bill_amounts_should_result_in_sum() {
+//        //Arrange
+//        User sut = new User();
+//        double input1 = 1;
+//        double input2 = 2;
+//        double input3 = 5;
+//        double input4 = 10;
+//        double expected = input1+input2+input3+input4;
+//
+//
+//        double currentMoneyProvided = sut.addMoney(expected);
+//
+//        Assert.assertEquals(expected, currentMoneyProvided, 0.001);
+
+    }
+
     // add a $1, $2, $5, and $10, should equal $18
     // adding $0.99 should not add anything to currentMoneyProvided
     // add -1, should not add anything to currentMoneyProvided
@@ -46,4 +63,4 @@ public class UserTests {
     //adding three products to purchase list results in List of size 3
     //adding null results in List of size 0
 
-}
+
