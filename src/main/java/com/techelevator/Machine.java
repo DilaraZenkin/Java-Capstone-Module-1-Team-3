@@ -13,18 +13,11 @@ public class Machine {
     private Map<String, Product> products;
 
     public Machine() {
-
         products = new TreeMap<String, Product>();
         importVendingMachineDataFile();
-        //displayProducts();
-        //checkProductStock("A1");
-        //checkProductStock("D2");
-
     }
 
     public void importVendingMachineDataFile() {
-
-        //System.out.println("importVendingMachineDataFile");
 
         Scanner input = new Scanner(System.in);
 
@@ -35,6 +28,7 @@ public class Machine {
             System.out.println("The file does not exist!");
             return;
         }
+
         //Parse the input file
         try (Scanner machineFileStreamer = new Scanner(file)){
             while(machineFileStreamer.hasNextLine()) {
@@ -48,14 +42,10 @@ public class Machine {
 
                 //add the product to the products Hashmap with the key pieces[0]
                 products.put(pieces[0], p);
-
              }
         } catch (FileNotFoundException e) {
             System.out.println("The file was not found!");
         }
-
-        //System.out.println("Hashmap products size: " + products.size());
-
     }
 
     public void displayProducts() {
@@ -70,7 +60,6 @@ public class Machine {
     }
 
     public int checkProductStock(String slot){
-        //System.out.println("The stock count for " + slot + " is " + products.get(slot).getStockCount());
         return products.get(slot).getStockCount();
     }
 
@@ -84,8 +73,5 @@ public class Machine {
     public Product getProduct(String slot) {
         return products.get(slot);
     }
-
-    //dispense(product);
-
 
 }

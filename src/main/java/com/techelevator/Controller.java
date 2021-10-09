@@ -1,8 +1,5 @@
 package com.techelevator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Controller {
 
     private Machine vendingMachine;
@@ -42,7 +39,7 @@ public class Controller {
                     isUserPresent = false;
                     break;
                 default:
-                    System.out.println("Please choose a number between 1 and 3");
+                    userInterface.displayInvalidMenuSelectionMessage();
                     break;
             }
 
@@ -58,7 +55,7 @@ public class Controller {
     public void purchase(){
         Boolean isUserPresent = true;
 
-        while (isUserPresent) {
+        do {
 
             //Display Purchase Menu
             userInterface.displayPurchaseMenu(user.getCurrentMoneyProvided());
@@ -68,7 +65,18 @@ public class Controller {
 
             //If (1) Feed Money...
             if (purchaseMenuUserSelection.equals("1")) {
-                user.addMoney(userInterface.feedMoney());
+                String billInput = userInterface.feedMoney();
+                int bill = 0;
+                try {
+                    bill = Integer.parseInt(billInput);
+                } catch(NumberFormatException | NullPointerException e) {
+                    userInterface.displayInvalidBillMessage();
+                }
+                if ((bill == 1 || bill == 2 || bill == 5 || bill == 10))
+                    user.addMoney(bill);
+                else {
+                    userInterface.displayInvalidBillMessage();
+                }
             }
 
             //If (2) Select Product...
@@ -80,7 +88,7 @@ public class Controller {
                 if (vendingMachine.isSlotValid(slotChoice)) {
 
                     if (vendingMachine.checkProductStock(slotChoice) < 1) {
-                        System.out.println("Product is sold out. Please make another selection.");
+                        userInterface.productSoldOut();
                     } else {
                         double priceOfPurchase = vendingMachine.getProduct(slotChoice).getPrice();
                         if (user.getCurrentMoneyProvided() >= priceOfPurchase) {
@@ -90,31 +98,26 @@ public class Controller {
 
                             String category = vendingMachine.getProduct(slotChoice).getCategory();
                             if(category.equalsIgnoreCase("Chip"))
-                                System.out.println("Crunch Crunch, Yum");
+                                userInterface.printDispensingMessage("Chip");
                             if(category.equalsIgnoreCase("Candy"))
-                                System.out.println("Munch Munch, Yum!");
+                                userInterface.printDispensingMessage("Candy");
                             if(category.equalsIgnoreCase("Drink"))
-                                System.out.println("Glug Glug, Yum!");
+                                userInterface.printDispensingMessage("Drink");
                             if(category.equalsIgnoreCase("Gum"))
-                                System.out.println("Chew Chew, Yum!");
+                                userInterface.printDispensingMessage("Gum");
 
                         } else {
-                            System.out.println("Please insert more money");
+                            userInterface.displayInsertMoreMoney();
                         }
                     }
-
-                    //List<Product> productsToPurchase = user.getProductsToPurchase();
-                    //for (Product item : productsToPurchase)
-                    //    System.out.println(item.getName());
                 }
-
                 else {
-                    System.out.println("This is not a valid choice");
+                    userInterface.displayInvalidSlotSelectionMessage();
                 }
             }
-
             //If (3) Finish Transaction...
             else if (purchaseMenuUserSelection.equals("3")) {
+
                 int quarters = 0;
                 int dimes = 0;
                 int nickels = 0;
@@ -126,21 +129,18 @@ public class Controller {
                 dimes = currentMoneyProvidedInCents / 10;
                 currentMoneyProvidedInCents = currentMoneyProvidedInCents % 10;
                 nickels = currentMoneyProvidedInCents / 5;
-                currentMoneyProvidedInCents = currentMoneyProvidedInCents % 5;
 
-                System.out.println("Number of quarters: " + quarters);
-                System.out.println("Number of dimes:    " + dimes);
-                System.out.println("Number of nickels:  " + nickels);
-                System.out.println("Money remaining:    " + currentMoneyProvidedInCents);
-                userInterface.finishTransaction();
+                userInterface.printChange(quarters, dimes, nickels);
                 isUserPresent = false;
+                return;
             }
 
             //If input is not 1, 2, or 3, prompt user and get new input
             else {
-                System.out.println("Please enter a selection between 1 and 3");
+                userInterface.displayInvalidMenuSelectionMessage();
+
             }
-        }
+        } while (isUserPresent);
     }
 
     public void exit() {
