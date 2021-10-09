@@ -23,29 +23,21 @@ public class UserInterface {
     public String getUserInput() {
         Scanner input = new Scanner(System.in);
         System.out.print("Please make a selection: ");
-        String userSelection = input.nextLine();
-        //System.out.println("User selection: " + userSelection);
-        return userSelection;
+        return input.nextLine();
     }
 
-    public int feedMoney() {
+    public String feedMoney() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter the value of your money (1, 2, 5, or 10)");
-        String billDenomination = input.nextLine();
-        int bill;
-        try {
-            bill = Integer.parseInt(billDenomination);
-        } catch(NumberFormatException e) {
-            System.out.println("That's not a valid bill");
-            return 0;
-        } catch(NullPointerException e) {
-            System.out.println("That's not a valid bill");
-            return 0;
-        }
-        return bill;
-
+        System.out.print("Please enter the value of your money (1, 2, 5, or 10): ");
+        return input.nextLine();
     }
 
+    public void printChange(int quarters, int dimes, int nickels) {
+        System.out.println("Thank you for using our vending machine, here is your change.");
+        System.out.println("Number of quarters: " + quarters);
+        System.out.println("Number of dimes:    " + dimes);
+        System.out.println("Number of nickels:  " + nickels);
+    }
 
     public void printProductInfo(Product purchasedProduct){
         System.out.println("Item Purchased: " + purchasedProduct.getName());
@@ -55,17 +47,47 @@ public class UserInterface {
 
     public String selectProduct() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter the slot number ");
+        System.out.print("Please enter the slot number: ");
         return input.nextLine();
     }
 
-    public void finishTransaction(){
-        System.out.println("Your transaction is finished!");
+    public void productSoldOut(){
+        System.out.println("Product is sold out. Please make another selection.");
     }
 
-    public void displayCurrentMoneyProvided(double amount) {
-        System.out.println("Current Money Provided: $" + String.format("%.2f", amount));
+    public void printDispensingMessage(String category) {
+        switch (category) {
+            case "Chip":
+                System.out.println("Crunch Crunch, Yum");
+                break;
+            case "Candy":
+                System.out.println("Munch Munch, Yum!");
+                break;
+            case "Drink":
+                System.out.println("Glug Glug, Yum!");
+                break;
+            case "Gum":
+                System.out.println("Chew Chew, Yum!");
+                break;
+        }
     }
+
+    public void displayInvalidBillMessage(){
+        System.out.println("Please insert a $1, $2, $5, or $10 bill.");
+    }
+
+    public void displayInsertMoreMoney() {
+        System.out.println("Please insert more money");
+    }
+
+    public void displayInvalidSlotSelectionMessage() {
+        System.out.println("This is not a valid product. Please try again.");
+    }
+
+    public void displayInvalidMenuSelectionMessage() {
+        System.out.println("Please enter a selection between 1 and 3");
+    }
+
 
 //    public String dateAndTime() {
 //        return LocalDate.now() + " > " + LocalTime.now();
