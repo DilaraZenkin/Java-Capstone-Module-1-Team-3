@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -38,6 +40,7 @@ public class UserInterface {
     public void printProductInfo(Product purchasedProduct){
         System.out.println("Item Purchased: " + purchasedProduct.getName());
         System.out.println("Price:          " + purchasedProduct.getPrice());
+        System.out.println("Item category:  " + purchasedProduct.getCategory());
     }
 
     public String selectProduct() {
@@ -54,4 +57,10 @@ public class UserInterface {
         System.out.println("Current Money Provided: $" + String.format("%.2f", amount));
     }
 
-}
+//    public String dateAndTime() {
+//        return LocalDate.now() + " > " + LocalTime.now();
+//    }
+
+    }
+
+

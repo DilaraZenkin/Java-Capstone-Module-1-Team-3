@@ -77,7 +77,7 @@ public class Controller {
 
                 //Check if slot is valid
                 // If valid, Enter Product into Purchase List, subtract price of product from currentMoneyProvided
-                if (vendingMachine.isSlotValid(slotChoice)){
+                if (vendingMachine.isSlotValid(slotChoice)) {
 
                     if (vendingMachine.checkProductStock(slotChoice) < 1) {
                         System.out.println("Product is sold out. Please make another selection.");
@@ -91,6 +91,19 @@ public class Controller {
                             System.out.println("Please insert more money");
                         }
                     }
+
+
+//                       String category = userInterface.getUserInput();
+//                        if(category.equalsIgnoreCase("Chip"));
+//                            System.out.println("Crunch Crunch, Yum");
+//                        if(category.equalsIgnoreCase("Candy"));
+//                            System.out.println("Munch Munch, Yum!");
+//                        if(category.equalsIgnoreCase("Drink"));
+//                            System.out.println("Glug Glug, Yum!");
+//                        if(category.equalsIgnoreCase("Gum"));
+//                            System.out.println("Chew Chew, Yum!");
+
+
 
 
 
