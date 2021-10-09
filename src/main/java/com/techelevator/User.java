@@ -31,6 +31,9 @@ public class User {
 
     public List<Product> addProductToPurchaseList(Product p) {
         //Add product to the user's purchase list
+        if(p==null) {
+            return productsToPurchase;
+        }
         getProductsToPurchase().add(p);
         //update stock count to reflect that one has been purchased
         p.setStockCount(p.getStockCount() - 1);
