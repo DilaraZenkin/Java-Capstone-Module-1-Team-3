@@ -10,7 +10,7 @@ public class User {
     private List<Product> productsToPurchase;
 
     public User() {
-        this.currentMoneyProvided =0.00;
+        this.currentMoneyProvided = 0.00;
         this.isFinished = false;
         this.productsToPurchase = new ArrayList<>();
     }

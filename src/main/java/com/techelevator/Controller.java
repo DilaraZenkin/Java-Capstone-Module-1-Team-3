@@ -87,21 +87,24 @@ public class Controller {
                             user.setCurrentMoneyProvided(user.getCurrentMoneyProvided() - priceOfPurchase);
                             user.addProductToPurchaseList(vendingMachine.getProduct(slotChoice));
                             userInterface.printProductInfo(vendingMachine.getProduct(slotChoice));
+
+                            String category = vendingMachine.getProduct(slotChoice).getCategory();
+                            if(category.equalsIgnoreCase("Chip"))
+                                System.out.println("Crunch Crunch, Yum");
+                            if(category.equalsIgnoreCase("Candy"))
+                                System.out.println("Munch Munch, Yum!");
+                            if(category.equalsIgnoreCase("Drink"))
+                                System.out.println("Glug Glug, Yum!");
+                            if(category.equalsIgnoreCase("Gum"))
+                                System.out.println("Chew Chew, Yum!");
+
+
+
                         } else {
                             System.out.println("Please insert more money");
                         }
                     }
 
-
-//                       String category = userInterface.getUserInput();
-//                        if(category.equalsIgnoreCase("Chip"));
-//                            System.out.println("Crunch Crunch, Yum");
-//                        if(category.equalsIgnoreCase("Candy"));
-//                            System.out.println("Munch Munch, Yum!");
-//                        if(category.equalsIgnoreCase("Drink"));
-//                            System.out.println("Glug Glug, Yum!");
-//                        if(category.equalsIgnoreCase("Gum"));
-//                            System.out.println("Chew Chew, Yum!");
 
 
 
