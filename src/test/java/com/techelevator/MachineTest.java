@@ -35,16 +35,19 @@ public class MachineTest {
         Assert.assertEquals(input, output);
     }
 
-    //@Test
+    @Test
 
-//    public void check_product_stock2() {
-//        Machine me = new Machine();
-//        String slot = "A8";
-//        int input = null;
-//
-//        int output = me.checkProductStock(slot);
-//        Assert.assertEquals(input, output);
-//    }
+    public void get_product() {
+        Machine me = new Machine();
+        String slot = "A1";
+        String input = "Potato Crisps";
+        //
+
+
+       Product output = me.getProduct(slot);
+       String actual = output.getName() ;
+        Assert.assertEquals(input, actual);
+    }
 
 
 }
