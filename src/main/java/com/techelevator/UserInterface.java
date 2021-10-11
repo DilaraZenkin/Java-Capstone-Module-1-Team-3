@@ -39,7 +39,7 @@ public class UserInterface {
         System.out.println("Number of nickels:  " + nickels);
     }
 
-    public void printProductInfo(Product purchasedProduct){
+    public void printProductInfo(Product purchasedProduct) {
         System.out.println("Item Purchased: " + purchasedProduct.getName());
         System.out.println("Price:          " + purchasedProduct.getPrice());
         System.out.println("Item category:  " + purchasedProduct.getCategory());
@@ -51,7 +51,7 @@ public class UserInterface {
         return input.nextLine();
     }
 
-    public void productSoldOut(){
+    public void productSoldOut() {
         System.out.println("Product is sold out. Please make another selection.");
     }
 
@@ -72,7 +72,7 @@ public class UserInterface {
         }
     }
 
-    public void displayInvalidBillMessage(){
+    public void displayInvalidBillMessage() {
         System.out.println("Please insert a $1, $2, $5, or $10 bill.");
     }
 
@@ -89,10 +89,6 @@ public class UserInterface {
     }
 
 
-//    public String dateAndTime() {
-//        return LocalDate.now() + " > " + LocalTime.now();
-//    }
-
-    }
+}
 
 
