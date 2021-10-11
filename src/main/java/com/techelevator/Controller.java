@@ -24,44 +24,43 @@ public class Controller {
 
         Boolean isUserPresent = true;
 
+
+        //Set up log file
+        try {
+            File log = new File("Log.txt");
+            log.createNewFile();
+            FileWriter myWriter = new FileWriter("Log.txt", false);
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
         while (isUserPresent) {
+
+
             userInterface.displayMainMenu();
             String userSelection = userInterface.getUserInput();
             switch (userSelection) {
                 case "1":
-                    //(1) Display Vending Machine Items
-                    //System.out.println("You selected #1");
                     vendingMachine.displayProducts();
                     System.out.println();
-                    //userInterface.displayMainMenu();
                     break;
                 case "2":
-                    //(2) Purchase
-                    //System.out.println("You selected #2");
                     purchase();
                     break;
                 case "3":
-                    //(3) Exit
-                    //System.out.println("You selected #3");
                     isUserPresent = false;
                     break;
                 default:
                     userInterface.displayInvalidMenuSelectionMessage();
                     break;
             }
-
         }
-
-
-    }
-
-    public void displayVendingMachineItems(){
-        vendingMachine.displayProducts();
     }
 
     public void purchase(){
         Boolean isUserPresent = true;
-
 
         do {
 
@@ -70,19 +69,6 @@ public class Controller {
 
             //Get User Input
             String purchaseMenuUserSelection = userInterface.getUserInput();
-
-            //Set up log file
-            try {
-                File log = new File("Log.txt");
-                if (log.createNewFile()) {
-                    //System.out.println("File created: " + log.getName());
-                } else {
-                    //System.out.println("File already exists.");
-                }
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-            }
 
             //If (1) Feed Money...
             if (purchaseMenuUserSelection.equals("1")) {
@@ -96,13 +82,11 @@ public class Controller {
                 if ((bill == 1 || bill == 2 || bill == 5 || bill == 10)) {
                     user.addMoney(bill);
 
-
-
                     try {
                         FileWriter myWriter = new FileWriter("Log.txt", true);
-                        myWriter.write("\n" + dateAndTime().substring(0,22) + " FEED MONEY: \\$" + bill + ".00 \\$" + String.format("%.2f", user.getCurrentMoneyProvided()));
+                        myWriter.write(dateAndTime().substring(0,22) + " FEED MONEY: \\$" + bill + ".00 \\$"
+                                + String.format("%.2f", user.getCurrentMoneyProvided()) + "\n");
                         myWriter.close();
-                        //System.out.println("Successfully wrote to the file.");
                     } catch (IOException e) {
                         System.out.println("An error occurred.");
                         e.printStackTrace();
@@ -136,9 +120,11 @@ public class Controller {
 
                             try {
                                 FileWriter myWriter = new FileWriter("Log.txt", true);
-                                myWriter.write("\n" + dateAndTime().substring(0,22) + " " + vendingMachine.getProduct(slotChoice).getName() + " " + slotChoice + " \\$" + String.format("%.2f", moneyProvidedBeforePurchase) + " \\$" + String.format("%.2f", user.getCurrentMoneyProvided()));
+                                myWriter.write( dateAndTime().substring(0,22) + " "
+                                        + vendingMachine.getProduct(slotChoice).getName() + " " + slotChoice
+                                        + " \\$" + String.format("%.2f", moneyProvidedBeforePurchase) + " \\$"
+                                        + String.format("%.2f", user.getCurrentMoneyProvided()) + "\n");
                                 myWriter.close();
-                                //System.out.println("Successfully wrote to the file.");
                             } catch (IOException e) {
                                 System.out.println("An error occurred.");
                                 e.printStackTrace();
@@ -184,14 +170,13 @@ public class Controller {
 
                 try {
                     FileWriter myWriter = new FileWriter("Log.txt", true);
-                    myWriter.write("\n" + dateAndTime().substring(0,22) + " GIVE CHANGE: \\$" + String.format("%.2f", currentMoneyProvided) + " \\$0.00");
+                    myWriter.write(dateAndTime().substring(0,22) + " GIVE CHANGE: \\$"
+                            + String.format("%.2f", currentMoneyProvided) + " \\$0.00 \n");
                     myWriter.close();
-                    //System.out.println("Successfully wrote to the file.");
                 } catch (IOException e) {
                     System.out.println("An error occurred.");
                     e.printStackTrace();
                 }
-
                 isUserPresent = false;
                 return;
             }
@@ -199,19 +184,13 @@ public class Controller {
             //If input is not 1, 2, or 3, prompt user and get new input
             else {
                 userInterface.displayInvalidMenuSelectionMessage();
-
             }
         } while (isUserPresent);
     }
 
-    public void exit() {
-
-    }
-
     public String dateAndTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy KK:mm:ss a", Locale.ENGLISH);
-        String dateAndTimeForLog = LocalDateTime.now().format(formatter);
-        return dateAndTimeForLog;
+        return LocalDateTime.now().format(formatter);
     }
 
 }

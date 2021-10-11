@@ -5,13 +5,10 @@ import java.util.List;
 
 public class User {
     private double currentMoneyProvided;
-    private String slotSelection;
-    private Boolean isFinished;
     private List<Product> productsToPurchase;
 
     public User() {
         this.currentMoneyProvided = 0.00;
-        this.isFinished = false;
         this.productsToPurchase = new ArrayList<>();
     }
 
@@ -22,10 +19,6 @@ public class User {
         } else {
             return currentMoneyProvided;
         }
-    }
-
-    public double dispenseChange() {
-        return currentMoneyProvided;
     }
 
     public List<Product> addProductToPurchaseList(Product p) {
@@ -49,27 +42,8 @@ public class User {
         this.currentMoneyProvided = currentMoneyProvided;
     }
 
-    public String getSlotSelection() {
-        return slotSelection;
-    }
-
-    public void setSlotSelection(String slotSelection) {
-        this.slotSelection = slotSelection;
-    }
-
-    public Boolean getFinished() {
-        return isFinished;
-    }
-
-    public void setFinished(Boolean finished) {
-        isFinished = finished;
-    }
-
     public List<Product> getProductsToPurchase() {
         return productsToPurchase;
     }
 
-    public void setProductsToPurchase(List<Product> productsToPurchase) {
-        this.productsToPurchase = productsToPurchase;
-    }
 }

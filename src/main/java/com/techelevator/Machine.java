@@ -7,9 +7,6 @@ import java.util.*;
 
 public class Machine {
 
-    //Placeholder for AuditEntry
-    //private List<AuditEntry> auditEntryList = new ArrayList<>();
-
     private Map<String, Product> products;
 
     public Machine() {
@@ -33,7 +30,6 @@ public class Machine {
         try (Scanner machineFileStreamer = new Scanner(file)){
             while(machineFileStreamer.hasNextLine()) {
                 String line = machineFileStreamer.nextLine();
-                //System.out.println(line);
                 String[] pieces = line.split("\\|");
 
                 //make new product
@@ -54,9 +50,10 @@ public class Machine {
         System.out.println("----   -----   -----------    ---------");
         for (String product : products.keySet()) {
             System.out.print(product);
-            System.out.println( "     $" + String.format("%.2f", products.get(product).getPrice()) + "   " + products.get(product).getStockCount() + "              " + products.get(product).getName());
+            System.out.println( "     $" + String.format("%.2f", products.get(product).getPrice())
+                    + "   " + products.get(product).getStockCount() + "              "
+                    + products.get(product).getName());
         }
-
     }
 
     public int checkProductStock(String slot){
